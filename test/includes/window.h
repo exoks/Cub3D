@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.h                                            :+:      :+:    :+:   */
+/*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:44:14 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/09/18 11:29:59 by oezzaou          ###   ########.fr       */
+/*   Created: 2023/09/11 13:27:09 by oezzaou           #+#    #+#             */
+/*   Updated: 2023/09/18 13:07:49 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef __IMAGE_H__
-# define __IMAGE_H__
+#ifndef __WINDOW_H__
+# define __WINDOW_H__
+# include "image.h"
 
 //******************************************************************************
-//*          Structes|                                                         *
+//*         Structes|                                                          *
 //******************************************************************************
-typedef struct	s_image
+typedef struct	s_window
 {
-	void		*img;
-	char		*addr;
-	int			bpp;
-	int			endian;
-	int			line_len;
-}				t_image;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	int			hight;
+	int			width;
+	t_image		*minimap;
+	t_image		screen;
+}				t_window;
 
 //******************************************************************************
-//*          Functions|                                                        *
+//*         Functions|                                                         *
 //******************************************************************************
-//void	*create_image();
-//void	*clear_image();
-//void	*destroy_image();
+int	create_window(t_window *win);
 
-#endif /*__IMAGE_H__*/
+#endif /*__WINDOW_H__*/

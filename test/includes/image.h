@@ -6,11 +6,13 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:44:14 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/09/18 11:29:59 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/09/18 15:26:17 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef __IMAGE_H__
 # define __IMAGE_H__
+# include <mlx.h>
+# include <stdlib.h>
 
 //******************************************************************************
 //*          Structes|                                                         *
@@ -18,6 +20,8 @@
 typedef struct	s_image
 {
 	void		*img;
+	int			hight;
+	int			width;
 	char		*addr;
 	int			bpp;
 	int			endian;
@@ -27,8 +31,8 @@ typedef struct	s_image
 //******************************************************************************
 //*          Functions|                                                        *
 //******************************************************************************
-//void	*create_image();
-//void	*clear_image();
-//void	*destroy_image();
+t_image	*create_image(void *mlx_ptr, int hight, int width);
+void	mlx_image_put_pixel(t_image *image, int x, int y, int color);
+void	clear_image(t_image *image);
 
 #endif /*__IMAGE_H__*/
