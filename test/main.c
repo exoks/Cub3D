@@ -6,12 +6,13 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:29:03 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/09/18 15:30:37 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/09/18 20:50:20 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 # include <mlx.h>
 # include <stdio.h>
 # include "window.h"
+# include "minimap.h"
 
 void	draw_grid(t_window *window, int step, int w);
 int		draw_ray(t_window *window, int *check_point, int x0, int y0);
@@ -24,10 +25,12 @@ int	main(void)
 
 	check_point = (int [4]) {0, 0};
 	create_window(&window);
-	
+
+	create_minimap(&window);
 	draw_grid(&window, 20, 400);
 	draw_ray(&window, check_point, 10, 10);
 
+	mlx_put_image_to_window(window.mlx_ptr, window.win_ptr, window.minimap->img, 0, 0);
 	mlx_loop(window.mlx_ptr);
 	return (0);
 }
@@ -44,7 +47,7 @@ int	draw_ray(t_window *window, int *check_point, int x0, int y0)
 			get_next_check_point(check_point, 20, 0.5);
 			printf("P(%d, %d)\n", check_point[0], check_point[1]);
 		}
-		mlx_pixel_put(window->mlx_ptr, window->win_ptr, i, (0.5 * i) + y0, (255 << 16));
+		mlx_image_pixel_put(window->minimap, i, (0.5 * i) + y0, (255 << 16));
 	}
 	// return the length of the ray
 	return (0);
@@ -62,14 +65,14 @@ void	draw_grid(t_window *window, int step, int w)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = -1;
 	while (++i < (w / step))
 	{
 		j = -1;
 		while (++j < w)
 		{
-				mlx_pixel_put(window->mlx_ptr, window->win_ptr, j, i * 20, 255);
-				mlx_pixel_put(window->mlx_ptr, window->win_ptr, i * 20, j, 255);
+				mlx_image_pixel_put(window->minimap, j, i * 20, 255);
+				mlx_image_pixel_put(window->minimap, i * 20, j, 255);
 		}
 	}
 }	

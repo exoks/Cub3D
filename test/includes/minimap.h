@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.c                                          :+:      :+:    :+:   */
+/*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 12:51:19 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/09/18 19:58:20 by oezzaou          ###   ########.fr       */
+/*   Created: 2023/09/18 19:50:45 by oezzaou           #+#    #+#             */
+/*   Updated: 2023/09/18 19:55:30 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-# include "minimap.h"
-# include <stdio.h>
-//====< create_minimap >========================================================
-int	create_minimap(t_window *window)
-{
-	window->minimap = create_image(window->mlx_ptr, 400, 400);
-	printf("minimap => %p\n", window->minimap);
-	return (0);
-}
+#ifndef __MINIMAP_H__
+# define __MINIMAP_H__
+# include "window.h"
 
-//====< draw_ray >==============================================================
-//int	draw_ray()
-//{
-//	
-//}
+int	create_minimap(t_window *window);
+
+#endif /*__MINIMAP_H__*/
