@@ -6,13 +6,14 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:29:03 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/09/18 20:50:20 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/09/19 20:47:45 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 # include <mlx.h>
 # include <stdio.h>
 # include "window.h"
 # include "minimap.h"
+# include "math.h"
 
 void	draw_grid(t_window *window, int step, int w);
 int		draw_ray(t_window *window, int *check_point, int x0, int y0);
@@ -32,6 +33,16 @@ int	main(void)
 
 	mlx_put_image_to_window(window.mlx_ptr, window.win_ptr, window.minimap->img, 0, 0);
 	mlx_loop(window.mlx_ptr);
+	return (0);
+}
+
+int	draw_rays(t_window *window)
+{
+	int	fov = 60;
+	int	m = 280;
+	long	ray_len;
+	
+	ray_len = sqrt((60 * 60) + (280 * 280));
 	return (0);
 }
 
