@@ -6,7 +6,7 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 12:59:33 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/09/18 20:39:05 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/09/20 16:46:42 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void	mlx_image_pixel_put(t_image *image, int x, int y, int color)
 {
 	int	*pixel;
 
+	if (x >= 400 || y >= 400)
+		return ;
+	// without this condition the shape will be returned
 	pixel = image->addr + (x * image->bpp / 8) + (y * image->line_len);
 	*pixel = color; 
 }
@@ -38,8 +41,13 @@ void	mlx_image_pixel_put(t_image *image, int x, int y, int color)
 void	clear_image(t_image *image)
 {
 	int	i;
+	int	j;
 
-	i = 0;
-	while (++i < image->hight * image->width)
-		*((int *) image->addr + i) = 0;
+	i = -1;
+	while (++i < 400)
+	{
+		j = -1;
+		while (++j < 400)
+			mlx_image_pixel_put(image, i, j, 0);
+	}
 }
