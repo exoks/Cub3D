@@ -22,6 +22,7 @@ typedef struct	s_player
 	float	yp;
 	float	fv;
 	float	dir;
+	int	alpha;
 }				t_player;
 
 typedef struct	s_window

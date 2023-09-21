@@ -30,7 +30,7 @@ void	mlx_image_pixel_put(t_image *image, int x, int y, int color)
 {
 	int	*pixel;
 
-	if (x >= 400 || y >= 400)
+	if (x >= 400 || y >= 400 || x < 0 || y < 0)
 		return ;
 	// without this condition the shape will be returned
 	pixel = image->addr + (x * image->bpp / 8) + (y * image->line_len);

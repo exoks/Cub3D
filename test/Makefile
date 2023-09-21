@@ -15,8 +15,8 @@
 #******************************************************************************#
 NAME		:= cub3d
 CC			:= cc
-MLX_FLAGS	:= -lmlx -framework OpenGL -framework AppKit
-#MLX_FLAGS	:= -lmlx -lXext -lX11 -lm -lz
+#MLX_FLAGS	:= -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS	:= -lmlx -lXext -lX11 -lm -lz
 SRC_DIR		:= src
 OBJ_DIR		:= obj
 INCLUDES	:= includes

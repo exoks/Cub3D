@@ -12,16 +12,16 @@
 
 # include "events.h"
 # include <stdio.h>
+
 int	events(int keycode, t_window *window)
 {
-//	printf("keycode| ==> %d\n", keycode);
-	if (keycode == 38)
-		printf("rotate ...\n");
+	if (keycode == 102 || keycode == 106)
+		window->player.alpha += 45.0;
 	if (keycode == MOVE_UP || keycode == MOVE_DOWN)
-		window->player.yp += ((126 - keycode) * 4 - 2);
+		window->player.yp += ((MOVE_DOWN - keycode) * 4 - 2);
 	if (keycode == MOVE_LEFT || keycode == MOVE_RIGHT)
-		window->player.xp += -((124 - keycode) * 4 - 2);
-	if (keycode >= 123 && keycode <= 126)
+		window->player.xp += -((MOVE_RIGHT - keycode) * 4 - 2);
+	if (keycode >= MOVE_LEFT  && keycode <= MOVE_DOWN || keycode == 102)
 	{
 		clear_image(window->minimap);
 		draw_grid(window, 20, 400);

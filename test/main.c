@@ -40,20 +40,27 @@ int	main(void)
 void	player_init(t_player *player)
 {
 	player->fv = 60;
-	player->xp = 20;
-	player->yp = 100;
+	player->xp = 200;
+	player->yp = 200;
 	player->dir = 100;
+	player->alpha = 0.0;
 }
 
 int	draw_rays(t_window *window)
 {
+	float	x, y;
 	float	xr;
 	float	yr;
 	float	slop;
 	int		i;
+	float		b;
 
-	xr = window->player.xp + window->player.dir;
-	yr = window->player.yp + (window->player.fv / 2);
+	b = ((float) window->player.alpha) * M_PI / 180.0;
+	x = window->player.xp + window->player.dir;
+	y = window->player.yp + (window->player.fv / 2);
+	xr = x * cos(b) - (y * sin(b));
+	yr = x * sin(b) + (y * cos(b));
+	printf("(xr, yr) : (%f, %f)\n", xr, yr);
 	i = window->player.fv;
 	while (--i > 0)
 	{
@@ -67,7 +74,7 @@ int	draw_ray(t_window *window, float slop)
 {
 	float	i;
 
-	i = 0;
+	i = -1;
 	while (++i < 400)
 	{
 		/*if (i == check_point[0] && 0.5 * i == check_point[1])
