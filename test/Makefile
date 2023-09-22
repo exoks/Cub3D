@@ -6,7 +6,7 @@
 #    By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 10:08:40 by oezzaou           #+#    #+#              #
-#    Updated: 2023/09/19 20:23:29 by oezzaou          ###   ########.fr        #
+#    Updated: 2023/09/22 15:47:43 by oezzaou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,9 @@
 #******************************************************************************#
 NAME		:= cub3d
 CC			:= cc
-#MLX_FLAGS	:= -lmlx -framework OpenGL -framework AppKit
-MLX_FLAGS	:= -lmlx -lXext -lX11 -lm -lz
+CFLAGS		:= -Wall -Wextra -Werror
+MLX_FLAGS	:= -lmlx -framework OpenGL -framework AppKit
+#MLX_FLAGS	:= -lmlx -lXext -lX11 -lm -lz
 SRC_DIR		:= src
 OBJ_DIR		:= obj
 INCLUDES	:= includes
@@ -30,13 +31,13 @@ RM			:= rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $^ -o $@ -I $(INCLUDES) $(MLX_FLAGS)
+	@$(CC) $(CFLAGS) $^ -o $@ -I $(INCLUDES) $(MLX_FLAGS)
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	$(CC) -c $< -o $@ -I $(INCLUDES)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/*/%.c | $(OBJ_DIR)
-	$(CC) -c $< -o $@ -I $(INCLUDES)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
 
 clean:
 	@$(RM) $(OBJ_DIR)
