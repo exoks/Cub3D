@@ -6,7 +6,7 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:29:03 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/09/22 20:51:40 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/09/23 14:33:28 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 # include <mlx.h>
@@ -52,15 +52,17 @@ int	draw_rays(t_window *window)
 	float		xr;
 	float		yr;
 	float		β;
-	int			i;
+	float		i;
 
 	p = &window->player;
-	β = ((float) p->alpha) * M_PI / 180.0;
-	xr = p->xp + (p->dir * cos(β)) - (p->fv / 2 * sin(β));
-	yr = p->yp + (p->dir * sin(β)) + (p->fv  / 2 * cos(β));
-	i = p->fv;
-	while (--i > 0)
-		draw_ray(window, xr, yr - i);
+	i = -1;
+	while (++i < 45)
+	{
+		β = ((float) p->alpha - i) * M_PI / 180.0;
+		xr = p->xp + (p->dir * cos(β)) - (p->fv / 2 * sin(β));
+		yr = p->yp + (p->dir * sin(β)) + (p->fv  / 2 * cos(β));
+		draw_ray(window, xr, yr);
+	}
 	return (0);
 }
 
