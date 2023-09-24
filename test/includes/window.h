@@ -6,7 +6,7 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:27:09 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/09/22 18:39:26 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/09/24 10:55:39 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef __WINDOW_H__
@@ -39,7 +39,8 @@ typedef struct	s_window
 //******************************************************************************
 //*         Functions|                                                         *
 //******************************************************************************
-int	create_window(t_window *win);
+int		create_window(t_window *win);
+void	render_screen(t_window *win);
 
 void	draw_grid(t_window *window, int step, int w);
 int		draw_ray(t_window *window, float xr, float yr);

@@ -6,7 +6,7 @@
 /*   By: oezzaou <oezzaou@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:29:03 by oezzaou           #+#    #+#             */
-/*   Updated: 2023/09/23 14:33:28 by oezzaou          ###   ########.fr       */
+/*   Updated: 2023/09/24 10:56:29 by oezzaou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 # include <mlx.h>
@@ -25,14 +25,14 @@ int	main(void)
 
 	check_point = (int [4]) {0, 0};
 	create_window(&window);
+	render_screen(&window);
+	//create_minimap(&window);
+	//player_init(&window.player);
+	//draw_grid(&window, 20, 400);
+	//draw_rays(&window);
 
-	create_minimap(&window);
-	player_init(&window.player);
-	draw_grid(&window, 20, 400);
-	draw_rays(&window);
-
-	mlx_put_image_to_window(window.mlx_ptr, window.win_ptr, window.minimap->img, 0, 0);
-	mlx_key_hook(window.win_ptr, events, &window);	
+	mlx_put_image_to_window(window.mlx_ptr, window.win_ptr, window.screen->img, 0, 0);
+	//mlx_key_hook(window.win_ptr, events, &window);	
 	mlx_loop(window.mlx_ptr);
 	return (0);
 }
