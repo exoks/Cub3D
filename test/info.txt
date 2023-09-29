@@ -1,4 +1,4 @@
 1 => find the equation in the linux    (done)
 2 => understand the matrix rotation    (done)
-3 => find another way to rotate			
+3 => find another way to rotate			()
 4 => understad the relation betweeen the ray and the 3d view
